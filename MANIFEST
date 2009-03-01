@@ -1,0 +1,12 @@
+Build.PL
+Changes
+lib/CGI/Application/Plugin/JSON.pm
+Makefile.PL
+MANIFEST			This list of files
+META.yml
+README
+t/00-pod.t
+t/01-pod-coverage.t
+t/02-json.t
+t/lib/MyApp.pm
+TODO
