@@ -1,0 +1,11 @@
+*~
+*.bak
+*.swo
+*.swp
+Build
+*.tar.gz
+TODO
+_build
+blib
+z-backup
+META.yml
