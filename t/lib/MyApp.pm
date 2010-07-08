@@ -11,6 +11,7 @@ sub setup {
         test_clear
         test_body
         test_callback
+        test_nojson
     )]);
 
     $self->start_mode('test_json');
@@ -59,6 +60,11 @@ sub test_callback {
         bar => 'more_stuff',
       }
     );
+}
+
+sub test_nojson {
+    my $self = shift;
+    return 'Hello world!';
 }
 
 1;

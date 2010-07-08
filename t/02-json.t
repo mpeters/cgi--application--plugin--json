@@ -5,7 +5,7 @@ use JSON::Any;
 use lib 't/lib';
 use MyApp;
 
-plan(tests => 21);
+plan(tests => 24);
 
 $ENV{'CGI_APP_RETURN_ONLY'} = 1;
 
@@ -68,6 +68,20 @@ $ENV{'CGI_APP_RETURN_ONLY'} = 1;
     $json = JSON::Any->decode($json);
     ok($json, 'has JSON structure');
     is_deeply($json, { foo => 'blah', baz => 'stuff', bar => 'more_stuff'});
+}
+
+# 22-24
+# has_json
+{
+    my $app = MyBase::MyApp->new( QUERY => CGI->new({ rm => 'test_json' }) );
+    my $output = $app->run();
+    is( $app->has_json(), 1, 'has_json found data in header' );
+    $app = MyBase::MyApp->new( QUERY => CGI->new({ rm => 'test_body' }) );
+    $output = $app->run();
+    is( $app->has_json(), 1, 'has_json found data in body' );
+    $app = MyBase::MyApp->new( QUERY => CGI->new({ rm => 'test_nojson' }) );
+    $output = $app->run();
+    is( $app->has_json(), 0, 'has_json did not find data' );
 }
 
 # has 2 tests

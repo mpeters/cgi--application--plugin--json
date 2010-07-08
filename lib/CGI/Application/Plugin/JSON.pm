@@ -12,6 +12,7 @@ our @EXPORT_OK = qw(
     json_callback
     add_json_header 
     clear_json_header 
+    has_json
     json_header_string 
     json_header_value
 );
@@ -43,6 +44,9 @@ our $VERSION = '1.01';
 
     # clear out everything in the outgoing JSON headers
     $self->clear_json_header();
+    
+    # check to see if there's a JSON header or body in play
+    return if $self->has_json();
 
     # or send the JSON in the document body
     $self->json_body( { foo => 'Lorem ipsum', bar => [ 0, 2, 3 ] } );
@@ -115,6 +119,26 @@ sub clear_json_header {
     my $private = $self->param('__CAP_JSON') || {};
     delete $private->{header};
     $self->param('__CAP_JSON' => $private);
+}
+
+=head2 has_json
+
+This method will check to see if there's a JSON header (or body) in play 
+and return true. This is useful in the case of wanting to skip shell 
+templates in a generic cgiapp_postrun method:
+
+    sub cgiapp_postrun {
+        my ( $self, $output_ref ) = @_;
+        return if $self->has_json();
+        # proceed w/ shell...
+    }
+
+=cut
+
+sub has_json {
+    my $self = shift;
+    my $has_json = ( $self->param('__CAP_JSON') ) ? 1 : 0;
+    return $has_json;
 }
 
 =head2 json_header_string
