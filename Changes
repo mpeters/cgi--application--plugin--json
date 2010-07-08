@@ -1,5 +1,8 @@
 Revision history for CGI::Application::Plugin::JSON
 
+1.02 Jul 08, 2010
+    - Adding a new has_json() method [Jason Purdy]
+
 1.01 Jan 03, 2007
     - Functionally the same as 1.00, but made some changes to Build.PL
       so that it installs even if there are no JSON modules but JSON::Any
