@@ -25,7 +25,7 @@ CGI::Application::Plugin::JSON - easy manipulation of JSON headers
 
 =cut
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 =head1 SYNOPSIS
 
