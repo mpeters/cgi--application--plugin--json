@@ -17,6 +17,11 @@ my $builder = Module::Build->new(
     },
     create_makefile_pl  => 'passthrough',
     create_readme       => 1,
+    meta_merge => {
+        resources => {
+            repository => 'https://github.com/mpeters/cgi--application--plugin--json'
+        }
+    },
 );
 
 $builder->create_build_script();
