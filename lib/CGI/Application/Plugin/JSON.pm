@@ -68,7 +68,7 @@ little bit easier.
 =head2 json_header
 
 This method takes name-value pairs and sets them to be used in the outgoing
-JSON. It is not cummulative and works similarly to C<header_props>. Use it
+JSON. It is not cumulative and works similarly to C<header_props>. Use it
 only if you have all of the values up front. In most cases L<add_json_header>
 is probably what you want.
 
@@ -89,7 +89,7 @@ sub json_header {
 =head2 add_json_header
 
 This method takes name-value pairs and sets them to be used in the outgoing
-JSON. It is cummulative and works similarly to C<header_add>; meaning multiple
+JSON. It is cumulative and works similarly to C<header_add>; meaning multiple
 calls will add to the hash of outgoing values.
 
     # both 'foo' and 'bar' will exist in the hash sent out 
